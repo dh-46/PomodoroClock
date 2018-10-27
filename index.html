@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>來顆番茄鐘!</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/customStyle.css">
+</head>
+
+<body>
+    <!--Navigation bar-->
+    <nav class="navbar navbar-inverse navbar-fixed navbar-margin">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">來顆番茄鐘!</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a id="triggerIntroModal" type="button" role="button">番茄鐘工作法介紹</a></li>
+                    <li><a id="triggerHowModal" type="button" role="button">使用教學</a></li>
+                    <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+                    <li><a id="triggerModal" type="button" role="button">設定</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其他專題 <span class="caret"></span></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!--content-->
+    <div class="container-fluid">
+        <div class="row section1">
+            <div class="col-sm-offset-2 col-sm-8 text-center">
+                <!--<div id="debug">Test</div>-->
+                <div class="row innerSec1">
+                    <div class="btn-group " role="group" aria-label="選擇計時模式">
+                        <button type="button" class="btn btn-warning btn-lg" id="btnWork">工作時間</button>
+                        <button type="button" class="btn btn-success btn-lg" id="btnShortBk">短休息</button>
+                        <button type="button" class="btn btn-success btn-lg" id="btnLongBk" value="reset">長休息</button>
+                    </div>
+                </div>
+                <div class="row innerSec2">
+                    <span id="showTime"></span>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row innerSec3">
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-primary btn-lg btn-block btn-wrap-text" id="btnStart">
+                                開始
+                            </button>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-danger btn-lg btn-block btn-wrap-text" id="btnOff">暫停</button>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-success btn-lg btn-block btn-wrap-text" id="btnReset">重新計時</button>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-warning btn-lg btn-block btn-wrap-text" id="btnAlert">通知測試</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!--footer-->
+    <footer class="footer container">
+        <div class="row text-center">
+            <span>Pomodoro Clock V1.2 by <a href="https://github.com/dh-46/" target="_blank">dh-46</a> (2018)</span> 
+            <a type="link" href="https://docs.google.com/forms/d/1snW4iEqOfffHbNRsMG9JLqDMuW2OlR0cFDKD5aGqWP0/" target="_blank"><span>問題回報<span></a>
+        </div>
+    </footer>
+
+    <!--Setting Dialog(對話盒)-->
+    <div class="modal fade" id="settingModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <span class="glyphicon glyphicon-cog"></span>
+                    <h3>自訂你的番茄鐘 !</h3>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" id="settingForm">
+                        <div class="checkbox checkbox-slider--b-flat checkbox-slider-md">
+                            <label>
+                    	<input type="checkbox" name="titleSwitch" id="titleSwitch" value="show" checked=""><span>標題顯示時間</span>
+                    	</label>
+                        </div>
+                        <div class="checkbox checkbox-slider--b-flat checkbox-slider-md">
+                            <label>
+                            <input type="checkbox" name="autoSwitch" id="autoSwitch" value="on" checked=""><span>自動執行工作與休息</span>
+                    	</label>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-6 text-center text-align">
+                                <label for="audioSelWork">工作通知鈴聲<span style="color:red">(點我試聽)</span></label>
+                                <select class="form-control" id="audioSelWork">
+                              <option value="Baila" selected>Baila_Mi_Cumbia_Sting</option>
+                              <option value="Dewey">Dewey_Cheedham_and_Howe_Sting</option>
+                              <option value="Cartoon">Cartoon_Bank_Heist_Sting</option>
+                            </select>
+                            </div>
+                            <div class="col-sm-6 text-center">
+                                <label for="audioSelShort">短休息通知鈴聲<span style="color:red">(點我試聽)</span></label>
+                                <select class="form-control" id="audioSelShort">
+                              <option value="Baila">Baila_Mi_Cumbia_Sting</option>
+                              <option value="Dewey" selected>Dewey_Cheedham_and_Howe_Sting</option>
+                              <option value="Cartoon">Cartoon_Bank_Heist_Sting</option>
+                            </select>
+                            </div>
+                            <div class="col-sm-6 text-center">
+                                <label for="audioSelLong">長休息通知鈴聲<span style="color:red">(點我試聽)</span></label>
+                                <select class="form-control" id="audioSelLong">
+                              <option value="Baila">Baila_Mi_Cumbia_Sting</option>
+                              <option value="Dewey">Dewey_Cheedham_and_Howe_Sting</option>
+                              <option value="Cartoon" selected>Cartoon_Bank_Heist_Sting</option>
+                            </select>
+                            </div>
+                            <div class="col-sm-6 text-center">
+                                <label for="setVolume">通知音量</label>
+                                <select class="form-control" id="setVolume">
+                              <option value="0.0">0%</option>
+                              <option value="0.25">25%</option>
+                              <option value="0.5" selected>50%</option>
+                              <option value="0.75">75%</option>
+                              <option value="1.0">100%</option>
+                            </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-4 text-center">
+                                <label for="userWork">工作時間</label>
+                                <input type="number" id="userWork" class="form-control" name="userWorkTime" placeholder="1~60(Min)" value="25" min="1" max="60"/>
+                            </div>
+                            <div class="col-sm-4 text-center">
+                                <label for="userShort">短休息時間</label>
+                                <input type="number" id="userShort" class="form-control" name="userShortBreak" placeholder="1~60(Min)" value="5" min="1" max="60"/>
+                            </div>
+                            <div class="col-sm-4 text-center">
+                                <label for="userLong">長休息時間</label>
+                                <input type="number" id="userLong" class="form-control" name="userLongBreak" placeholder="1~60(Min)" value="10" min="1" max="60"/>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="pull-right">
+                        
+                        <button type="button" id="btnConfirm" class="btn btn-success" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-ok"></span> 儲存設定
+                    </button>
+                        <button type="button" id="btnDefault" class="btn btn-info" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-refresh"></span> 初始設定
+                    </button>
+                        <button type="button" id="btnCancel" class="btn btn-warning" data-dismiss="modal">
+                                    <span class="glyphicon glyphicon-remove"></span> 取消
+                                </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--Introduction Dialog(對話盒)-->
+    <div class="modal fade" id="introModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <span class="glyphicon glyphicon-gift"></span>
+                    <h3>歡迎使用來顆番茄鐘！</h3>
+                </div>
+                <div class="modal-body" id="introContent">
+                    <h4>什麼是番茄鐘工作法</h4>
+                    <p>番茄工作法 是一種時間管理法方法，
+                        在上世紀八十年代由Francesco Cirillo創立。
+                        該方法使用一個定時器來分割出一個一般為25分鐘的工作時間和5分鐘的休息時間，
+                        而那些時間段被稱為pomodori，為義大利語單詞 pomodoro（中文：番茄）之複數，故又稱為Pomodoro Technique。</p>
+                    <hr>
+                    <h4>基本流程</h4>
+                    <ol>
+                        <li>決定待完成的任務</li>
+                        <li>設定番茄工作法定時器至 n 分鐘（ 通常為25分鐘）。</li>
+                        <li>持續工作直至定時器提示, 記下一個x。</li>
+                        <li>短暫休息3 - 5 分鐘。</li>
+                        <li>每四個x， 休息15 - 30 分鐘。</li>
+                    </ol>
+                </div>
+                <div class="modal-footer" id="footerWiki">
+                    <p>參考資料來源: 維基百科</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--How-to Dialog(對話盒)-->
+    <div class="modal fade" id="howModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <span class="glyphicon glyphicon-gift"></span>
+                    <h3>基本操作教學</h3>
+                </div>
+                <div class="modal-body" id="howContent">
+                    <ol>
+                        <li>開始計時前須確認瀏覽器是否支援桌面通知，<br>煩請點選畫面中的"通知測試"確認。</li>
+                        <br>
+                        <li>上方第一排按鈕分別為時間模式，<br>預設工作與短長休息時間為25/5/10分鐘。</li>
+                        <br>
+                        <li>下排四顆按鈕則分別為番茄鐘的計時開始/暫停/重新計時</li>
+                        <br>
+                        <li>右上方的設定按鈕內有自訂選項，<br>可調整鈴聲與自訂時間等功能。</li>
+                        <br>
+                        <li>Win10系統的桌面通知預設音效，可至<br>系統設定->通知與動作->點選"您的瀏覽器名稱"(E.g. Google Chrome)進入設定->關閉"通知到達時撥放音效"。<br>關閉後網頁音效就不會與系統預設通知音效重疊。</li>
+                        <br>
+                        <li>有任何問題歡迎點選下方問題回報連結！</li>
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Place JS here for better loading experience-->
+    
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.backstretch.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/mainfunc.js"></script>
+</body>
+
+</html>
