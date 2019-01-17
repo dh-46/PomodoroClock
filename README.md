@@ -24,7 +24,7 @@
 4. jQuery
    
 ## 畫面截圖:
-
+![Screenshot](screenshot.PNG)
 
 
 ## 參考資料來源: 
