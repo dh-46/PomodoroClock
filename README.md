@@ -22,10 +22,10 @@
 
 |實際畫面|說明|
 |--|--|
-|![Screenshot](screenshot.PNG)|主畫面|
-|![Setting Dialog](screenshot_setting.PNG)|設定對話盒|
-|![Desktop Notification](screenshot_notification.PNG)|桌面通知|
-|![Title Time Noti](screenshot_titleTime.PNG)|視窗列時間顯示|
+|![Screenshot](screenshot/main.PNG)|主畫面|
+|![Setting Dialog](screenshot/setting.PNG)|設定對話盒|
+|![Desktop Notification](screenshot/notification.PNG)|桌面通知|
+|![Title Time Noti](screenshot/titleTime.PNG)|視窗列時間顯示|
 
 
 ## 參考資料來源: 
